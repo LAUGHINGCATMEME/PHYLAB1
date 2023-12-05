@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-a = np.loadtxt(r"C:\Users\Lenovo\Desktop\PHYSICS LAB\4. Youngs Moduls\data")
+a = np.loadtxt(r"C:\Users\Lenovo\Desktop\Physics Lab 1\PH1123 2023\04. Youngs Moduls\data")  # Path of data here
 weight = []
 loading = []
 unloading = []
@@ -42,4 +42,4 @@ breath = np.mean(np.array([5])) * 10 ** -2
 g = 9.78378
 youngs_moduls = g*length**3/(4*fitm*breath*width**3)*10**-9
 
-print(f"Youngs Moduls: {youngs_moduls:.2f} * 10^-9 +- {youngs_moduls*math.sqrt((np.std(width)/np.mean(width))**2 + (errm/fitm)**2) + 0.01}")
+print(f"Youngs Moduls: {youngs_moduls:.2f} * 10^9 +- {youngs_moduls*math.sqrt((np.std(width)/np.mean(width))**2 + (errm/fitm)**2) + 0.01}")

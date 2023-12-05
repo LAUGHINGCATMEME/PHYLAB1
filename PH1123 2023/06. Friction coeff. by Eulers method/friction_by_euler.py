@@ -25,43 +25,21 @@ def f_x_5(x, mu):
     return x*math.exp(mu*5*math.pi)
 
 
-t2_0 = np.array([turn0_T2, turn1_T2, turn2_T2])[:, 0]
-t2_1 = np.array([turn0_T2, turn1_T2, turn2_T2])[:, 1]
-t2_2 = np.array([turn0_T2, turn1_T2, turn2_T2])[:, 2]
-t2_3 = np.array([turn0_T2, turn1_T2, turn2_T2])[:, 3]
-print(t2_0, t2_1, t2_2)
-plt.plot(np.array([math.pi * 1, math.pi * 3, math.pi * 5]), t2_0, marker='o', linestyle='', label=f'for T1 = {turn0_T1[0]}')
-plt.plot(np.array([math.pi * 1, math.pi * 3, math.pi * 5]), t2_1, marker='o', linestyle='', label=f'for T1 = {turn0_T1[1]}')
-plt.plot(np.array([math.pi * 1, math.pi * 3, math.pi * 5]), t2_2, marker='o', linestyle='', label=f'for T1 = {turn0_T1[2]}')
-plt.plot(np.array([math.pi * 1, math.pi * 3, math.pi * 5]), t2_3, marker='o', linestyle='', label=f'for T1 = {turn0_T1[3]}')
-plt.legend()
-plt.show()
-exit()
-
-
-
-
-
-
-
-
-
-
+# Curve fits
 param_fit, param_cov = curve_fit(f_x_1, turn0_T1, turn0_T2)
 param_error = np.sqrt(np.diag(param_cov))
 fitm1 = param_fit[0]
 errm1 = param_error[0]
 plt.plot(turn0_T1, turn0_T2, marker='o', linestyle='', color="red")
-plt.plot(turn0_T1, f_x_1(np.array(turn0_T1), fitm1), color="red")
+plt.plot(np.linspace(0, np.max(turn0_T1), 100), f_x_1(np.linspace(0, np.max(turn0_T1), 100), fitm1), color="red")
 print(f"μ = {fitm1} +- {errm1}    {errm1*100/fitm1:.2f}%")
-
 
 param_fit, param_cov = curve_fit(f_x_3, turn1_T1, turn1_T2)
 param_error = np.sqrt(np.diag(param_cov))
 fitm2 = param_fit[0]
 errm2 = param_error[0]
 plt.plot(turn1_T1, turn1_T2, marker='o', linestyle='', color="green")
-plt.plot(turn1_T1, f_x_3(np.array(turn1_T1), fitm2), color="green")
+plt.plot(np.linspace(0, np.max(turn1_T1), 100), f_x_3(np.linspace(0, np.max(turn1_T1), 100), fitm2), color="green")
 print(f"μ = {fitm2} +- {errm2}    {errm2*100/fitm2:.2f}%")
 
 param_fit, param_cov = curve_fit(f_x_5, turn2_T1, turn2_T2)
@@ -69,28 +47,12 @@ param_error = np.sqrt(np.diag(param_cov))
 fitm3 = param_fit[0]
 errm3 = param_error[0]
 plt.plot(turn2_T1, turn2_T2, marker='o', linestyle='', color="blue")
-plt.plot(turn2_T1, f_x_5(np.array(turn2_T1), fitm3), color="blue")
+plt.plot(np.linspace(0, np.max(turn2_T1), 100), f_x_5(np.linspace(0, np.max(turn2_T1), 100), fitm3), color="blue")
 print(f"μ = {fitm3} +- {errm3}    {errm3*100/fitm3:.2f}%")
 
 
-
-
-
+# Output graph
+plt.xlim(0)
 plt.xlabel('T1/g (gm)')
 plt.ylabel('T2/g (gm)')
 plt.show()
-
-
-x1 = np.a
-
-
-
-
-# Result
-#print(f"m = {fitm} +- {errm} {errm*100/fitm:.2f}%\nc = {fitc} +- {errc:.7} {abs(errc*100/fitc):.2f}%")
-bh = 1
-#plt.plot(np.linspace(0, bh), f_x(np.array(np.linspace(0, bh)), fitm, fitc), color="red")
-#plt.ylim(0, 0.69)
-#plt.xlim(0.000, 0.013)
-
-
